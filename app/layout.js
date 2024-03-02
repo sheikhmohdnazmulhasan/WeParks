@@ -1,5 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
+import logo from '@/public/logo.png';
+import { LuCalendarClock } from "react-icons/lu";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +14,26 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+
+        {/* navbar */}
+        <div className="flex justify-between items-center py-4 bg-[#161616] px-5 md:px-16">
+          <div className="">
+            <Image src={logo} className="w-28" alt="Logo"></Image>
+          </div>
+          <div className="flex text-white items-center hover:text-[#29ABE3] gap-3 cursor-pointer hover:scale-105 transition-all">
+            <LuCalendarClock size={28} />
+            <p>Check Booking</p>
+          </div>
+        </div>
+
+        <div className="min-h-screen">
+          {children}
+        </div>
+
+        {/* footer */}
+        <div className=""></div>
+      </body>
     </html>
   );
 }
