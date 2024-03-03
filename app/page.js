@@ -9,6 +9,12 @@ import card4 from '@/public/icons/4.png';
 import x1 from '@/public/x/1.png';
 import x2 from '@/public/x/2.png';
 import x3 from '@/public/x/3.png';
+import xx1 from '@/public/xx/1.png';
+import xx2 from '@/public/xx/2.png';
+import xx4 from '@/public/xx/4.png';
+import xx3 from '@/public/xx/3.png';
+import xx5 from '@/public/xx/5.png';
+import xx6 from '@/public/xx/6.png';
 
 export default function Home() {
   return (
@@ -128,28 +134,28 @@ export default function Home() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
 
           {/* Card 1 */}
-          <div className="bg-[#BAEAFF] p-5">
+          <div className="bg-[#BAEAFF] p-5 hover:scale-105 transition-all">
             <h1 className="text-2xl font-semibold">Park & Ride</h1>
             <Image src={card1} width={90} alt="Card 1"></Image>
             <p className="text-sm">Alternatively known as "Parking in the airport grounds" or "Park and Stroll," this option strikes a balance between distance and price. If a transfer bus is necessary, the journey is brief. Generally, you can reach the terminal in just a few minutes.</p>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#BAEAFF] p-5">
+          <div className="bg-[#BAEAFF] p-5 hover:scale-105 transition-all">
             <h1 className="text-2xl font-semibold">Park & Stroll</h1>
             <Image src={card2} width={90} alt="Card 1"></Image>
             <p className="text-sm">Alternatively known as "Parking in the airport grounds" or "Park and Stroll," this option strikes a balance between distance and price. If a transfer bus is necessary, the journey is brief. Generally, you can reach the terminal in just a few minutes.</p>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-[#BAEAFF] p-5">
+          <div className="bg-[#BAEAFF] p-5 hover:scale-105 transition-all">
             <h1 className="text-2xl font-semibold">Meet & Greet</h1>
             <Image src={card3} width={90} alt="Card 1"></Image>
             <p className="text-sm">Opt for the effortless option by driving your car to a drop-off area near the terminal. Leave your vehicle with a dedicated driver who will park it in a nearby facility while you proceed directly to check-in.</p>
           </div>
 
           {/* Card 4 */}
-          <div className="bg-[#BAEAFF] p-5">
+          <div className="bg-[#BAEAFF] p-5 hover:scale-105 transition-all">
             <h1 className="text-2xl font-semibold">Electric car?</h1>
             <Image src={card4} width={90} alt="Card 1"></Image>
             <p className="text-sm">For electric vehicle owners, visit our Airport Electric Car Charging page to discover airports, airport hotels, and airport car parks equipped with charging points.</p>
@@ -176,6 +182,69 @@ export default function Home() {
           <Image src={x3} width={70} alt="X1"></Image>
           <p className="italic mb-3">Get Exclusive Offers</p>
           <p>Count on our 24/7 expert support for immediate assistance and guidance whenever you need it.</p>
+        </div>
+      </div>
+      <div className="w-[85%] mx-auto mt-20 hidden md:block">
+        <h1 className="text-3xl text-[#0074BC] font-semibold">The most popular Airport right now</h1>
+        <p className="mt-3">Experience the utmost convenience at the UK's preferred airport parking facility. Offering secure and reliable services, it's the top choice for travelers seeking peace of mind while leaving their vehicles. Make your journey stress-free with our trusted and popular airport parking option.</p>
+
+        {/* Card */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          {/* card 1 */}
+          <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
+            <figure><Image src={xx1} alt="XX1" className="w-60 " /></figure>
+            <div className="card-body">
+              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
+              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+            </div>
+          </div>
+
+          {/* card 1 */}
+          <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
+            <figure><Image src={xx2} alt="XX1" className="w-60 " /></figure>
+            <div className="card-body">
+              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
+              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+            </div>
+          </div>
+          
+          {/* card 1 */}
+          <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
+            <figure><Image src={xx3} alt="XX1" className="w-60 " /></figure>
+            <div className="card-body">
+              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
+              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+            </div>
+          </div>
+
+          {/* card 1 */}
+          <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
+            <figure><Image src={xx4} alt="XX1" className="w-60 " /></figure>
+            <div className="card-body">
+              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
+              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+            </div>
+          </div>
+
+          {/* card 1 */}
+          <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
+            <figure><Image src={xx5} alt="XX1" className="w-60 " /></figure>
+            <div className="card-body">
+              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
+              <p>Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+            </div>
+          </div>
+
+          {/* card 1 */}
+          <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
+            <figure><Image src={xx6} alt="XX1" className="w-72 " /></figure>
+            <div className="card-body">
+              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
+              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
