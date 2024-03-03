@@ -1,3 +1,4 @@
+'use client'
 import { CiLocationOn } from "react-icons/ci";
 import { PiAirplaneLanding, PiAirplaneTakeoff } from "react-icons/pi";
 import { IoIosArrowForward } from "react-icons/io";
@@ -15,10 +16,20 @@ import xx4 from '@/public/xx/4.png';
 import xx3 from '@/public/xx/3.png';
 import xx5 from '@/public/xx/5.png';
 import xx6 from '@/public/xx/6.png';
+import { React, useEffect } from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false,
+    })
+  }, []);
+
   return (
-    <main className="mb-20">
+    <main className="mb-20 overflow-hidden">
 
       {/* Banner */}
 
@@ -34,7 +45,7 @@ export default function Home() {
         </div>
 
         {/* Form */}
-        <form className="flex items-center gap-4 w-[85%] -mt-12 rounded-t-3xl rounded-b-md bg-white shadow-lg h-28 px-10 mx-auto">
+        <form className="flex items-center gap-4 w-[85%] -mt-12 rounded-t-3xl rounded-b-md bg-white shadow-lg h-28 px-10 mx-auto" data-aos="fade-up">
 
           <div className=" w-[28.33%] ">
             <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
@@ -116,7 +127,7 @@ export default function Home() {
       </div>
 
       {/* 2nd */}
-      <div className="w-[85%] md:mt-36 mt-10 mx-auto">
+      <div className="w-[85%] md:mt-36 mt-10 mx-auto" >
         <div className="bg-[url('https://i.ibb.co/GJ8y2yp/x.png')] md:rounded-3xl md:h-[600px] w-full bg-cover">
           <div className="bg-black bg-opacity-60 md:rounded-3xl px-10 h-full w-full flex flex-col justify-center text-white md:pl-20">
             <h1 className="md:text-5xl text-2xl font-bold pt-10 md:pt-0">Rely on Trusted Parking <br /> Solutions for Your <br />  UK Airport Parking Needs.</h1>
@@ -128,7 +139,7 @@ export default function Home() {
 
       {/* Explore affordable parking options */}
       <div className="w-[85%] mx-auto mt-16 ">
-        <h1 className="text-3xl text-[#0074BC] font-semibold">Explore affordable parking options</h1>
+        <h1 className="text-3xl text-[#0074BC] font-semibold"  data-aos="fade-right">Explore affordable parking options</h1>
         <p className="mt-3">Explore our user-friendly comparison table below to simplify your decision-making process. Our packages are organized by price, ensuring that our most budget-friendly options are conveniently located at the top of the list.</p>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
@@ -185,7 +196,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-[85%] mx-auto mt-20 hidden md:block">
-        <h1 className="text-3xl text-[#0074BC] font-semibold">The most popular Airport right now</h1>
+        <h1 className="text-3xl text-[#0074BC] font-semibold"  data-aos="fade-right">The most popular Airport right now</h1>
         <p className="mt-3">Experience the utmost convenience at the UK's preferred airport parking facility. Offering secure and reliable services, it's the top choice for travelers seeking peace of mind while leaving their vehicles. Make your journey stress-free with our trusted and popular airport parking option.</p>
 
         {/* Card */}
