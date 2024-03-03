@@ -1,10 +1,18 @@
 import { CiLocationOn } from "react-icons/ci";
-
 import { PiAirplaneLanding, PiAirplaneTakeoff } from "react-icons/pi";
+import { IoIosArrowForward } from "react-icons/io";
+import Image from "next/image";
+import card1 from '@/public/icons/1.png';
+import card2 from '@/public/icons/2.png';
+import card3 from '@/public/icons/3.png';
+import card4 from '@/public/icons/4.png';
+import x1 from '@/public/x/1.png';
+import x2 from '@/public/x/2.png';
+import x3 from '@/public/x/3.png';
 
 export default function Home() {
   return (
-    <main>
+    <main className="mb-20">
 
       {/* Banner */}
 
@@ -102,14 +110,72 @@ export default function Home() {
       </div>
 
       {/* 2nd */}
-      <div className="w-[85%] md:mt-36 mt-10 mx-auto mb-10">
+      <div className="w-[85%] md:mt-36 mt-10 mx-auto">
         <div className="bg-[url('https://i.ibb.co/GJ8y2yp/x.png')] md:rounded-3xl md:h-[600px] w-full bg-cover">
           <div className="bg-black bg-opacity-60 md:rounded-3xl px-10 h-full w-full flex flex-col justify-center text-white md:pl-20">
             <h1 className="md:text-5xl text-2xl font-bold pt-10 md:pt-0">Rely on Trusted Parking <br /> Solutions for Your <br />  UK Airport Parking Needs.</h1>
             <button className="bg-[#0074BC] ml-5 w-fit hover:bg-[#3e7ca3] text-white rounded-3xl px-8 py-2.5 uppercase mt-5 mb-8
              md:mt-16">Search Parking </button>
           </div>
+        </div>
+      </div>
 
+      {/* Explore affordable parking options */}
+      <div className="w-[85%] mx-auto mt-16 ">
+        <h1 className="text-3xl text-[#0074BC] font-semibold">Explore affordable parking options</h1>
+        <p className="mt-3">Explore our user-friendly comparison table below to simplify your decision-making process. Our packages are organized by price, ensuring that our most budget-friendly options are conveniently located at the top of the list.</p>
+
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
+
+          {/* Card 1 */}
+          <div className="bg-[#BAEAFF] p-5">
+            <h1 className="text-2xl font-semibold">Park & Ride</h1>
+            <Image src={card1} width={90} alt="Card 1"></Image>
+            <p className="text-sm">Alternatively known as "Parking in the airport grounds" or "Park and Stroll," this option strikes a balance between distance and price. If a transfer bus is necessary, the journey is brief. Generally, you can reach the terminal in just a few minutes.</p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="bg-[#BAEAFF] p-5">
+            <h1 className="text-2xl font-semibold">Park & Stroll</h1>
+            <Image src={card2} width={90} alt="Card 1"></Image>
+            <p className="text-sm">Alternatively known as "Parking in the airport grounds" or "Park and Stroll," this option strikes a balance between distance and price. If a transfer bus is necessary, the journey is brief. Generally, you can reach the terminal in just a few minutes.</p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-[#BAEAFF] p-5">
+            <h1 className="text-2xl font-semibold">Meet & Greet</h1>
+            <Image src={card3} width={90} alt="Card 1"></Image>
+            <p className="text-sm">Opt for the effortless option by driving your car to a drop-off area near the terminal. Leave your vehicle with a dedicated driver who will park it in a nearby facility while you proceed directly to check-in.</p>
+          </div>
+
+          {/* Card 4 */}
+          <div className="bg-[#BAEAFF] p-5">
+            <h1 className="text-2xl font-semibold">Electric car?</h1>
+            <Image src={card4} width={90} alt="Card 1"></Image>
+            <p className="text-sm">For electric vehicle owners, visit our Airport Electric Car Charging page to discover airports, airport hotels, and airport car parks equipped with charging points.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Offer */}
+      <div className="mt-20 w-[85%] mx-auto space-y-10 md:space-y-0 md:flex items-center justify-center gap-20">
+        <div className="flex flex-col items-center justify-center text-center">
+          <Image src={x1} width={70} alt="X1"></Image>
+          <p className="italic mb-3">Get Exclusive Offers</p>
+          <div className="flex items-center">
+            <input type="email" name="" id="" placeholder="Enter Your Email Address" className="border rounded-3xl px-3 py-1" />
+            <IoIosArrowForward size={30} className="border rounded-3xl cursor-pointer -ml-8" />
+          </div>
+        </div>
+        <div className="flex flex-col justify-center text-center items-center">
+          <Image src={x2} width={70} alt="X1"></Image>
+          <p className="italic mb-3">Get Exclusive Offers</p>
+          <p>Top-choice airport parking: secure, reliable, stress-free, and unbeatable prices guaranteed.</p>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          <Image src={x3} width={70} alt="X1"></Image>
+          <p className="italic mb-3">Get Exclusive Offers</p>
+          <p>Count on our 24/7 expert support for immediate assistance and guidance whenever you need it.</p>
         </div>
       </div>
     </main>
