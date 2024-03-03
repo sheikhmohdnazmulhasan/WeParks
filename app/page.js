@@ -196,43 +196,43 @@ export default function Home() {
             <figure><Image src={xx1} alt="XX1" className="w-60 " /></figure>
             <div className="card-body">
               <h2 className="card-title font-bold text-[#0074BC]">London</h2>
-              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now for a stress</p>
             </div>
           </div>
 
-          {/* card 1 */}
+          {/* card 2 */}
           <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
             <figure><Image src={xx2} alt="XX1" className="w-60 " /></figure>
             <div className="card-body">
-              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
-              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+              <h2 className="card-title font-bold text-[#0074BC]">Manchester</h2>
+              <p className="hidden md:block">Secure your parking spot at Manchester Airport for a hassle-free travel experience</p>
             </div>
           </div>
-          
-          {/* card 1 */}
+
+          {/* card 3 */}
           <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
             <figure><Image src={xx3} alt="XX1" className="w-60 " /></figure>
             <div className="card-body">
-              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
-              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+              <h2 className="card-title font-bold text-[#0074BC]">Luton</h2>
+              <p className="hidden md:block">Secure parking at Luton Airport. Reserve your spot for hassle-free travel</p>
             </div>
           </div>
 
-          {/* card 1 */}
+          {/* card 4 */}
           <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
             <figure><Image src={xx4} alt="XX1" className="w-60 " /></figure>
             <div className="card-body">
-              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
-              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+              <h2 className="card-title font-bold text-[#0074BC]">Liverpool</h2>
+              <p className="hidden md:block">Dependable Liverpool Airport parking. Book your space for a hassle-free departure and return</p>
             </div>
           </div>
 
-          {/* card 1 */}
+          {/* card 5 */}
           <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
             <figure><Image src={xx5} alt="XX1" className="w-60 " /></figure>
             <div className="card-body">
-              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
-              <p>Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+              <h2 className="card-title font-bold text-[#0074BC]">Edinburgh</h2>
+              <p>Secure Edinburgh Airport parking. Book your space for a worry-free departure and return</p>
             </div>
           </div>
 
@@ -240,8 +240,8 @@ export default function Home() {
           <div className="card h-36 card-side mt-10 border cursor-pointer hover:scale-105 transition-all">
             <figure><Image src={xx6} alt="XX1" className="w-72 " /></figure>
             <div className="card-body">
-              <h2 className="card-title font-bold text-[#0074BC]">London</h2>
-              <p className="hidden md:block">Secure your London Airport parking effortlessly. Reserve your space now <br /> for a stress</p>
+              <h2 className="card-title font-bold text-[#0074BC]">Bermingham</h2>
+              <p className="hidden md:block">Secure Birmingham Airport parking. Reserve your space for a stress-free departure and return</p>
             </div>
           </div>
 
