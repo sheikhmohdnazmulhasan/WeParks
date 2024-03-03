@@ -100,6 +100,18 @@ export default function Home() {
           </form>
         </div>
       </div>
+
+      {/* 2nd */}
+      <div className="w-[85%] md:mt-36 mt-10 mx-auto mb-10">
+        <div className="bg-[url('https://i.ibb.co/GJ8y2yp/x.png')] md:rounded-3xl md:h-[600px] w-full bg-cover">
+          <div className="bg-black bg-opacity-60 md:rounded-3xl px-10 h-full w-full flex flex-col justify-center text-white md:pl-20">
+            <h1 className="md:text-5xl text-2xl font-bold pt-10 md:pt-0">Rely on Trusted Parking <br /> Solutions for Your <br />  UK Airport Parking Needs.</h1>
+            <button className="bg-[#0074BC] ml-5 w-fit hover:bg-[#3e7ca3] text-white rounded-3xl px-8 py-2.5 uppercase mt-5 mb-8
+             md:mt-16">Search Parking </button>
+          </div>
+
+        </div>
+      </div>
     </main>
   )
 }
