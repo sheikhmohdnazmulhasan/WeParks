@@ -244,7 +244,6 @@ export default function Home() {
               <p className="hidden md:block">Secure Birmingham Airport parking. Reserve your space for a stress-free departure and return</p>
             </div>
           </div>
-
         </div>
       </div>
     </main>
