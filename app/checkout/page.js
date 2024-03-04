@@ -2,8 +2,9 @@ import React from 'react';
 
 const Checkout = () => {
     return (
-        <div className='flex justify-between m-20 gap-8'>
-            <div className="w-[70%] shadow-xl p-6 rounded-md">
+        <div className='md:flex justify-between md:m-20 gap-8'>
+
+            <div className="md:w-[70%] border-b mb-5 md:shadow-xl p-6 rounded-md">
                 <h1 className='text-[#0074BC] text-2xl'>Fill Your Info</h1>
                 <p className='opacity-75'>Enter the required information for each traveler and be sure that it exactly matches the government-issued ID.</p>
 
@@ -39,7 +40,7 @@ const Checkout = () => {
                     <input type="text" name="" id="" placeholder=' Terminal - 1' className='border mb-4 py-2 px-3 rounded-md' />
                 </form>
             </div>
-            <div className="w-[30%] shadow-xl h-[550px] p-6 rounded-md">
+            <div className="md:w-[30%] shadow-xl h-[550px] p-6 rounded-md">
                 <h1 className='text-xl font-semibold'>Booking summary</h1>
                 <p className='pb-2'>We Parks Meet And Greet Parking</p>
                 <hr />
