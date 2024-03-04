@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { BsCurrencyPound } from "react-icons/bs";
 
 const Booking = () => {
     return (
@@ -13,7 +14,7 @@ const Booking = () => {
                 <h3> 12/32/2023 to 32/54/2033</h3>
             </div>
             <div className="md:w-[25%] md:flex md:flex-col md:items-end ">
-                <h1 className='text-3xl font-semibold'>$ 23123</h1>
+                <h1 className='text-2xl flex items-center font-semibold'> <BsCurrencyPound className='font-bold' /> 23123</h1>
                 <button className='py-3 w-full md:w-fit  px-5 rounded-3xl bg-black text-white font-semibold mt-5'>Book Now</button>
             </div>
         </div>
