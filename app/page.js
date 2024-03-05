@@ -21,6 +21,17 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default function Home() {
+
+  function handleHomeForm(event) {
+    event.preventDefault();
+    const airport = event.target.airport.value;
+    const from = event.target.from.value;
+    const to = event.target.to.value;
+
+    console.log( to);
+
+  }
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -45,15 +56,15 @@ export default function Home() {
         </div>
 
         {/* Form */}
-        <form className="flex items-center gap-4 w-[85%] -mt-12 rounded-t-3xl rounded-b-md bg-white shadow-lg h-28 px-10 mx-auto" data-aos="fade-up">
+        <form className="flex items-center gap-4 w-[85%] -mt-12 rounded-t-3xl rounded-b-md bg-white shadow-lg h-28 px-10 mx-auto" data-aos="fade-up" onSubmit={handleHomeForm}>
 
           <div className=" w-[28.33%] ">
             <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
               <CiLocationOn size={20} />
               <p className="text-xl">Airport?</p>
             </div>
-            <select name="" id="" className='w-full border p-2 rounded-3xl' >
-              <option value="">ABCD</option>
+            <select name="airport" id="" className='w-full border p-2 rounded-3xl' >
+              <option value="ABCD">ABCD</option>
             </select>
           </div>
 
@@ -62,7 +73,7 @@ export default function Home() {
               <PiAirplaneTakeoff size={20} />
               <p className="text-xl">Parking From?</p>
             </div>
-            <input type="datetime-local" name="" id="" className='w-full border p-2 rounded-3xl' />
+            <input type="datetime-local" name="from" id="" className='w-full border p-2 rounded-3xl' />
           </div>
 
           <div className=" w-[28.33%] ">
@@ -70,7 +81,7 @@ export default function Home() {
               <PiAirplaneLanding size={20} />
               <p className="text-xl">Collect car?</p>
             </div>
-            <input type="datetime-local" name="" id="" className='w-full border p-2 rounded-3xl' />
+            <input type="datetime-local" name="to" id="" className='w-full border p-2 rounded-3xl' />
           </div>
 
           <div className="w-[15%] mt-8">
@@ -139,7 +150,7 @@ export default function Home() {
 
       {/* Explore affordable parking options */}
       <div className="w-[85%] mx-auto mt-16 ">
-        <h1 className="text-3xl text-[#0074BC] font-semibold"  data-aos="fade-right">Explore affordable parking options</h1>
+        <h1 className="text-3xl text-[#0074BC] font-semibold" data-aos="fade-right">Explore affordable parking options</h1>
         <p className="mt-3">Explore our user-friendly comparison table below to simplify your decision-making process. Our packages are organized by price, ensuring that our most budget-friendly options are conveniently located at the top of the list.</p>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
@@ -196,7 +207,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-[85%] mx-auto mt-20 hidden md:block">
-        <h1 className="text-3xl text-[#0074BC] font-semibold"  data-aos="fade-right">The most popular Airport right now</h1>
+        <h1 className="text-3xl text-[#0074BC] font-semibold" data-aos="fade-right">The most popular Airport right now</h1>
         <p className="mt-3">Experience the utmost convenience at the UK's preferred airport parking facility. Offering secure and reliable services, it's the top choice for travelers seeking peace of mind while leaving their vehicles. Make your journey stress-free with our trusted and popular airport parking option.</p>
 
         {/* Card */}
