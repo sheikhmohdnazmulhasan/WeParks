@@ -16,11 +16,15 @@ import xx4 from '@/public/xx/4.png';
 import xx3 from '@/public/xx/3.png';
 import xx5 from '@/public/xx/5.png';
 import xx6 from '@/public/xx/6.png';
-import { React, useEffect } from 'react'
+import { React, useEffect, useState } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import moment from 'moment';
 
 export default function Home() {
+  const initialPrice = 100;
+
+  const [price, setPrice] = useState(initialPrice);
 
   function handleHomeForm(event) {
     event.preventDefault();
@@ -28,9 +32,40 @@ export default function Home() {
     const from = event.target.from.value;
     const to = event.target.to.value;
 
-    console.log( to);
+    const momentFrom = moment(from);
+    const momentTo = moment(to);
+    const spendHours = momentTo.diff(momentFrom, 'hours');
 
+    if (spendHours <= 24) {
+      setPrice(initialPrice);
+
+    } else if (spendHours > 24 && spendHours <= 48) {
+      
+      setPrice(((initialPrice * 2) - initialPrice * .05));
+
+    } else if (spendHours > 48 && spendHours <= 72) {
+      setPrice(((initialPrice * 3) - initialPrice * .1));
+
+    } else if (spendHours > 72 && spendHours <= 96) {
+      setPrice(((initialPrice * 4) - initialPrice * .15));
+
+    } else if (spendHours > 96 && spendHours <= 120) {
+      setPrice(((initialPrice * 5) - initialPrice * .2));
+
+    } else if (spendHours > 120 && spendHours <= 144) {
+      setPrice(((initialPrice * 6) - initialPrice * .25));
+
+    } else if (spendHours > 144 && spendHours <= 168) {
+      setPrice(((initialPrice * 7) - initialPrice * .3));
+
+    } else {
+      console.log('sss');
+    }
+
+    console.log(price, spendHours);
   }
+
+
 
   useEffect(() => {
     AOS.init({
