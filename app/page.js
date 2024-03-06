@@ -24,7 +24,20 @@ import Link from "next/link";
 
 export default function Home() {
   const initialPrice = 100;
-  let price = initialPrice;
+  const [price , setPrice] = useState({});
+
+  const calculateDiscount = (times, discount)=>{
+    let discountRate = discount * 100;
+    let totalPrice = initialPrice * times;
+    let totalDiscount = totalPrice * discount;
+    let subTotal = totalPrice - totalDiscount;
+
+    const priceHistory = {
+      totalPrice, discountRate, totalDiscount, subTotal
+    };
+
+    return priceHistory;
+  }
 
 
   function handleHomeForm(event) {
@@ -38,47 +51,39 @@ export default function Home() {
     const spendHours = momentTo.diff(momentFrom, 'hours');
 
     if (spendHours <= 24) {
-      price = initialPrice;
+      setPrice(calculateDiscount(1, 0));
 
     } else if (spendHours > 24 && spendHours <= 48) {
-      let totalPrice = initialPrice * 2;
-      let discount = totalPrice * .05;
-      price = totalPrice - discount;
+      // let totalPrice = initialPrice * 2;
+      // let discount = totalPrice * .05;
+      // price = totalPrice - discount;
+      setPrice(calculateDiscount(2, .05));
+
 
     } else if (spendHours > 48 && spendHours <= 72) {
-
-      let totalPrice = initialPrice * 3;
-      let discount = totalPrice * .1;
-      price = totalPrice - discount;
+     
+      setPrice(calculateDiscount(3, .1));
 
     } else if (spendHours > 72 && spendHours <= 96) {
-
-      let totalPrice = initialPrice * 4;
-      let discount = totalPrice * .15;
-      price = totalPrice - discount;
+      
+      setPrice(calculateDiscount(4, .15))
 
     } else if (spendHours > 96 && spendHours <= 120) {
 
-      let totalPrice = initialPrice * 5;
-      let discount = totalPrice * .2;
-      price = totalPrice - discount;
+      setPrice(calculateDiscount(5 , .2))
 
     } else if (spendHours > 120 && spendHours <= 144) {
 
-      let totalPrice = initialPrice * 6;
-      let discount = totalPrice * .25;
-      price = totalPrice - discount;
+      setPrice(calculateDiscount(6 , .25));
 
     } else {
 
       let day = spendHours / 24;
-      let totalPrice = initialPrice * day;
-      let discount = totalPrice * .3;
-      price = totalPrice - discount;
-
+      setPrice(calculateDiscount(day , .3));
     }
 
   }
+
 
   useEffect(() => {
     AOS.init({
@@ -139,7 +144,9 @@ export default function Home() {
               query: {
                 price: price
               }
-            }}> <button className="bg-[#0074BC] hover:bg-[#3e7ca3] text-white rounded-3xl px-2 py-3 uppercase w-full">Book Now</button></Link>
+            }}> 
+            <button className="bg-[#0074BC] hover:bg-[#3e7ca3] text-white rounded-3xl px-2 py-3 uppercase w-full">Book Now</button>
+            </Link>
           </div>
 
         </form>
