@@ -1,5 +1,6 @@
 
 const Checkout = () => {
+
     return (
         <div className='md:flex justify-between md:m-20 gap-8'>
 
@@ -72,7 +73,7 @@ const Checkout = () => {
                     <h4>Subtotal: </h4>
                     <h4>$ 20 </h4>
                 </div>
-                
+
                 <div className=" flex justify-center mt-8">
                     <button className='w-full py-3 bg-[#0074BC] hover:bg-[#4381a7] transition-all uppercase rounded-md text-white'>Checkout</button>
                 </div>
