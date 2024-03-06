@@ -20,13 +20,14 @@ import { React, useEffect, useState } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import moment from 'moment';
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const initialPrice = 100;
-  const [price , setPrice] = useState({});
+  const [price, setPrice] = useState({});
+  const router = useRouter();
 
-  const calculateDiscount = (times, discount)=>{
+  const calculateDiscount = (times, discount) => {
     let discountRate = discount * 100;
     let totalPrice = initialPrice * times;
     let totalDiscount = totalPrice * discount;
@@ -61,26 +62,34 @@ export default function Home() {
 
 
     } else if (spendHours > 48 && spendHours <= 72) {
-     
+
       setPrice(calculateDiscount(3, .1));
 
     } else if (spendHours > 72 && spendHours <= 96) {
-      
+
       setPrice(calculateDiscount(4, .15))
 
     } else if (spendHours > 96 && spendHours <= 120) {
 
-      setPrice(calculateDiscount(5 , .2))
+      setPrice(calculateDiscount(5, .2))
 
     } else if (spendHours > 120 && spendHours <= 144) {
 
-      setPrice(calculateDiscount(6 , .25));
+      setPrice(calculateDiscount(6, .25));
 
     } else {
 
       let day = spendHours / 24;
-      setPrice(calculateDiscount(day , .3));
+      setPrice(calculateDiscount(day, .3));
     }
+
+    const paymentSummery = (name, value) => {
+      const params = new URLSearchParams();
+      params.set(name, value);
+      return params.toString();
+    };
+
+    router.push('/booking' + "?", paymentSummery('payment', price))
 
   }
 
@@ -138,15 +147,7 @@ export default function Home() {
           </div>
 
           <div className="w-[15%] mt-8">
-
-            <Link href={{
-              pathname: '/booking',
-              query: {
-                price: price
-              }
-            }}> 
             <button className="bg-[#0074BC] hover:bg-[#3e7ca3] text-white rounded-3xl px-2 py-3 uppercase w-full">Book Now</button>
-            </Link>
           </div>
 
         </form>
