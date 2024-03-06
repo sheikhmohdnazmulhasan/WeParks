@@ -16,7 +16,7 @@ const orderSchema = new Schema({
     paymentStatus: String,
     trxID: String,
 
-});
+}, { timestamps: true });
 
 const Orders = mongoose.models.Order || mongoose.model('Orders', orderSchema);
 
