@@ -3,6 +3,7 @@ import React from 'react';
 import { BsCurrencyPound } from "react-icons/bs";
 
 const Booking = () => {
+    
     return (
         <div className='bg-[#0074BC] md:px-10 py-5 px-6 m-10 text-white space-y-10 md:h-60 md:w-[80%] md:mx-auto rounded-lg md:flex items-center gap-10 justify-between'>
             <div className="md:w-[50%]">
