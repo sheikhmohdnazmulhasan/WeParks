@@ -1,16 +1,20 @@
+'use client'
 import axios from 'axios';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+
 import React from 'react';
 import { BsCurrencyPound } from "react-icons/bs";
 import useSWR from 'swr';
-
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
 const Booking = () => {
 
-    const { data = [], error } = useSWR('http://localhost:3000/api/order', fetcher)
+    const searchParams = useSearchParams();
+    const bookingId = searchParams.get('bookingId');
 
-    console.log(data);
+    const { data = [], error } = useSWR('http://localhost:3000/api/order', fetcher);
 
     return (
         <div className='bg-[#0074BC] md:px-10 py-5 px-6 m-10 text-white space-y-10 md:h-60 md:w-[80%] md:mx-auto rounded-lg md:flex items-center gap-10 justify-between'>

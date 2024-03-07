@@ -6,13 +6,12 @@ import { NextResponse } from "next/server";
 export async function GET() {
     await connectMongoDB();
     const result = await Orders.find();
-    return NextResponse.json(result)
+    return NextResponse.json(result);
 }
 
 export async function POST(request) {
     await connectMongoDB();
     const data = await request.json();
-
     const result = Orders.create(data);
 
     if (result) {

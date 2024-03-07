@@ -16,9 +16,10 @@ const orderSchema = new Schema({
     subTotal: String,
     paymentStatus: String,
     trxID: String,
+    orderNumber: Number,
 
 }, { timestamps: true });
 
-const Orders = mongoose.models.Order || mongoose.model('Orders', orderSchema);
+const Orders = mongoose.models.Orders || mongoose.model('Orders', orderSchema);
 
 export default Orders

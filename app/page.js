@@ -21,8 +21,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import moment from "moment";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const initialPrice = 100;
@@ -57,6 +57,7 @@ export default function Home() {
     const spendHours = momentTo.diff(momentFrom, "hours");
 
     const toastId = toast.loading('Navigating');
+    const randomNumber = Math.random();
 
     if (momentFrom > momentTo) {
       toast.error('please Provide Valid Date', { id: toastId });
@@ -93,6 +94,7 @@ export default function Home() {
       startDate: to,
       EndDate: from,
       airport,
+      orderNumber: randomNumber
     };
 
     try {
@@ -100,7 +102,7 @@ export default function Home() {
 
       if (serverResponse.data.success) {
         toast.success('Navigating to Booking Route', { id: toastId })
-        router.push('/booking');
+        router.push(`/booking?bookingId=${randomNumber}`);
 
       }
 
