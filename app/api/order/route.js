@@ -35,4 +35,19 @@ export async function POST(request) {
 
     };
 
-}
+};
+
+export async function PUT(request) {
+    await connectMongoDB();
+    const data = await request.json();
+    const filter = { _id: data._id };
+    const result = await Orders.findByIdAndUpdate(filter, data);
+
+    if (result) {
+        return NextResponse.json({ message: 'Order successfully Updated in database', success: true }, { status: 200 });
+
+    } else {
+        return NextResponse.json({ message: 'Something Wrong', success: false }, { status: 500 });
+
+    }
+};

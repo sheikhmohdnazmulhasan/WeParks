@@ -14,7 +14,9 @@ const orderSchema = new Schema({
     discountRate: String,
     totalDiscount: String,
     subTotal: String,
-    paymentStatus: String,
+    paymentVerified: Boolean,
+    isReceived: Boolean,
+    isRelease: Boolean,
     trxID: String,
     orderNumber: Number,
 
