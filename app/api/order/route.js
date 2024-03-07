@@ -3,16 +3,27 @@ import Orders from "@/models/order";
 import { NextResponse } from "next/server";
 
 
-export async function GET() {
+
+export async function GET(request) {
     await connectMongoDB();
-    const result = await Orders.find();
-    return NextResponse.json(result)
+
+    const { searchParams } = new URL(request.url);
+    const bookingId = parseFloat(searchParams.get('bookingId'));
+
+    if (bookingId) {
+        const result = await Orders.findOne({ orderNumber: bookingId });
+        return NextResponse.json(result);
+
+    } else {
+        const result = Orders.find();
+        return NextResponse.json(result);
+    }
 }
 
 export async function POST(request) {
     await connectMongoDB();
-    const data = await request.json();
 
+    const data = await request.json();
     const result = Orders.create(data);
 
     if (result) {
@@ -24,4 +35,19 @@ export async function POST(request) {
 
     };
 
-}
+};
+
+export async function PUT(request) {
+    await connectMongoDB();
+    const data = await request.json();
+    const filter = { _id: data._id };
+    const result = await Orders.findByIdAndUpdate(filter, data);
+
+    if (result) {
+        return NextResponse.json({ message: 'Order successfully Updated in database', success: true }, { status: 200 });
+
+    } else {
+        return NextResponse.json({ message: 'Something Wrong', success: false }, { status: 500 });
+
+    }
+};

@@ -14,11 +14,14 @@ const orderSchema = new Schema({
     discountRate: String,
     totalDiscount: String,
     subTotal: String,
-    paymentStatus: String,
+    paymentVerified: Boolean,
+    isReceived: Boolean,
+    isRelease: Boolean,
     trxID: String,
+    orderNumber: Number,
 
 }, { timestamps: true });
 
-const Orders = mongoose.models.Order || mongoose.model('Orders', orderSchema);
+const Orders = mongoose.models.Orders || mongoose.model('Orders', orderSchema);
 
 export default Orders
