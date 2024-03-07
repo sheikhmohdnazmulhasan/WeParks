@@ -20,11 +20,15 @@ import { React, useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import moment from "moment";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const initialPrice = 100;
   // const [price, setPrice] = useState({});
   let price = {};
+  const router = useRouter();
 
   const calculateDiscount = (times, discount) => {
     let discountRate = discount * 100;
@@ -51,6 +55,15 @@ export default function Home() {
     const momentFrom = moment(from);
     const momentTo = moment(to);
     const spendHours = momentTo.diff(momentFrom, "hours");
+
+    const toastId = toast.loading('Navigating');
+
+    if (momentFrom > momentTo) {
+      toast.error('please Provide Valid Date', { id: toastId });
+      return
+
+    }
+
 
     if (spendHours <= 24) {
       price = calculateDiscount(1, 0);
@@ -82,7 +95,18 @@ export default function Home() {
       airport,
     };
 
-    console.log(dataForServer);
+    try {
+      const serverResponse = await axios.post('http://localhost:3000/api/order', dataForServer);
+
+      if (serverResponse.data.success) {
+        toast.success('Navigating to Booking Route', { id: toastId })
+        router.push('/booking');
+
+      }
+
+    } catch (error) {
+      toast.error('Internal Server Error', { id: toastId })
+    }
   }
 
   useEffect(() => {
@@ -95,6 +119,7 @@ export default function Home() {
   return (
     <main className="mb-20 overflow-hidden">
       {/* Banner */}
+      <div><Toaster /></div>
 
       {/* for PC */}
       <div className="bg-[url('https://i.ibb.co/XYJy5pR/banner.png')] md:block hidden h-[450px] bg-cover item-left">
