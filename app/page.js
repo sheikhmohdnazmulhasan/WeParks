@@ -20,12 +20,11 @@ import { React, useEffect, useState } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import moment from 'moment';
-import { useRouter } from "next/navigation";
 
 export default function Home() {
   const initialPrice = 100;
   const [price, setPrice] = useState({});
-  const router = useRouter();
+  
 
   const calculateDiscount = (times, discount) => {
     let discountRate = discount * 100;
@@ -41,12 +40,12 @@ export default function Home() {
   }
 
 
-  function handleHomeForm(event) {
+  async function handleHomeForm(event) {
     event.preventDefault();
     const airport = event.target.airport.value;
     const from = event.target.from.value;
     const to = event.target.to.value;
-
+  
     const momentFrom = moment(from);
     const momentTo = moment(to);
     const spendHours = momentTo.diff(momentFrom, 'hours');
@@ -83,13 +82,10 @@ export default function Home() {
       setPrice(calculateDiscount(day, .3));
     }
 
-    const paymentSummery = (name, value) => {
-      const params = new URLSearchParams();
-      params.set(name, value);
-      return params.toString();
-    };
+    const dataForServer = { totalDiscount: price.totalDiscount, totalPrice: price.totalPrice, discountRate: price.discountRate, subTotal: price.subTotal, startDate: to, EndDate: from, airport }
 
-    router.push('/booking' + "?", paymentSummery('payment', price))
+    console.log(dataForServer);
+
 
   }
 
@@ -114,6 +110,7 @@ export default function Home() {
           <div className="text-end">
             <h2 className='text-4xl text-[#29ABE3] font-bold'>Park your car safely <br /> on Airport</h2>
             <p className='text-white mt-3 font-semibold'>Your gateway to the world</p>
+
           </div>
         </div>
 
