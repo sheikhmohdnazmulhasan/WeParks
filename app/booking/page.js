@@ -14,7 +14,9 @@ const Booking = () => {
     const searchParams = useSearchParams();
     const bookingId = searchParams.get('bookingId');
 
-    const { data = [], error } = useSWR('http://localhost:3000/api/order', fetcher);
+    const { data = [], error } = useSWR(`http://localhost:3000/api/order?bookingId=${bookingId}`, fetcher);
+
+    console.log(data);
 
     return (
         <div className='bg-[#0074BC] md:px-10 py-5 px-6 m-10 text-white space-y-10 md:h-60 md:w-[80%] md:mx-auto rounded-lg md:flex items-center gap-10 justify-between'>
@@ -24,10 +26,11 @@ const Booking = () => {
             </div>
             <div className="md:w-[25%]">
                 <h1 className='text-xl font-semibold'>Dateline</h1>
-                <h3> 12/32/2023 to 32/54/2033</h3>
+                <h3> To: {data?.startDate}</h3>
+                <h3> From: {data?.EndDate}</h3>
             </div>
             <div className="md:w-[25%] md:flex md:flex-col md:items-end ">
-                <h1 className='text-2xl flex items-center font-semibold'> <BsCurrencyPound className='font-bold' /> 23123</h1>
+                <h1 className='text-2xl flex items-center font-semibold'> <BsCurrencyPound className='font-bold' /> {data?.subTotal}</h1>
                 <button className='py-3 w-full md:w-fit  px-5 rounded-3xl bg-black text-white font-semibold mt-5'>Book Now</button>
             </div>
         </div>

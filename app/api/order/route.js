@@ -3,14 +3,26 @@ import Orders from "@/models/order";
 import { NextResponse } from "next/server";
 
 
-export async function GET() {
+
+export async function GET(request) {
     await connectMongoDB();
-    const result = await Orders.find();
-    return NextResponse.json(result);
+
+    const { searchParams } = new URL(request.url);
+    const bookingId = parseFloat(searchParams.get('bookingId'));
+
+    if (bookingId) {
+        const result = await Orders.findOne({ orderNumber: bookingId });
+        return NextResponse.json(result);
+
+    } else {
+        const result = Orders.find();
+        return NextResponse.json(result);
+    }
 }
 
 export async function POST(request) {
     await connectMongoDB();
+
     const data = await request.json();
     const result = Orders.create(data);
 
