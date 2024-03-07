@@ -20,6 +20,7 @@ import { React, useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import moment from "moment";
+import axios from "axios";
 
 export default function Home() {
   const initialPrice = 100;
@@ -82,7 +83,12 @@ export default function Home() {
       airport,
     };
 
-    console.log(dataForServer);
+    try {
+      const serverResponse = await axios.post('http://localhost:3000/api/order', dataForServer);
+      console.log(serverResponse);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
