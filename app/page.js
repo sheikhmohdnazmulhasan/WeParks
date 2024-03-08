@@ -26,7 +26,6 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const initialPrice = 100;
-  // const [price, setPrice] = useState({});
   let price = {};
   const router = useRouter();
 
@@ -64,7 +63,6 @@ export default function Home() {
       return
 
     }
-
 
     if (spendHours <= 24) {
       price = calculateDiscount(1, 0);
@@ -195,7 +193,7 @@ export default function Home() {
 
       <div className="bg-[url('https://i.ibb.co/XYJy5pR/banner.png')] py-10 bg-cover md:hidden">
         <div className="bg-black bg-opacity-70 h-full w-full">
-          <form className=" flex flex-col pt-5 justify-center w-full px-5">
+          <form className=" flex flex-col pt-5 justify-center w-full px-5" onSubmit={handleHomeForm}>
             {/* location */}
             <div>
               <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
@@ -204,7 +202,7 @@ export default function Home() {
               </div>
               <div className="w-full">
                 <select
-                  name=""
+                  name="airport"
                   id=""
                   className="w-full border text-white bg-transparent p-2.5 rounded-3xl"
                 >
@@ -217,12 +215,12 @@ export default function Home() {
             <div className="mt-4">
               <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
                 <PiAirplaneTakeoff size={20} />
-                <p className="text-xl">Airport?</p>
+                <p className="text-xl">Parking From?</p>
               </div>
               <div className="w-full">
                 <input
                   type="datetime-local"
-                  name=""
+                  name="from"
                   id=""
                   className="w-full border bg-transparent text-white p-2 rounded-3xl"
                 />
@@ -233,12 +231,12 @@ export default function Home() {
             <div className="mt-4">
               <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
                 <PiAirplaneLanding size={20} />
-                <p className="text-xl">Airport?</p>
+                <p className="text-xl">Collect car?</p>
               </div>
               <div className="w-full">
                 <input
                   type="datetime-local"
-                  name=""
+                  name="to"
                   id=""
                   className="w-full border bg-transparent text-white p-2 rounded-3xl"
                 />

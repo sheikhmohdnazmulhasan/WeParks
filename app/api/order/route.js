@@ -3,7 +3,6 @@ import Orders from "@/models/order";
 import { NextResponse } from "next/server";
 
 
-
 export async function GET(request) {
     await connectMongoDB();
 
