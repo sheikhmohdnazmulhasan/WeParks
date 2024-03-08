@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useState } from "react";
+import Swal from "sweetalert2";
 import useSWR from "swr";
 
 const fetcher = url => axios.get(url).then(res => res.data);
@@ -11,18 +12,90 @@ const Dashboard = () => {
     const [singleData, setSingleData] = useState([]);
 
 
-    const { data = [], error } = useSWR('http://localhost:3000/api/order', fetcher);
+    const { data = [], error, mutate } = useSWR('http://localhost:3000/api/order', fetcher);
 
+    async function handleShowDetails(_id) {
 
-    async function handleShowDetails(bookingId) {
-
-        const singleData = data.find(order => order.orderNumber == bookingId);
+        const singleData = data.find(order => order._id == _id);
         setSingleData(singleData);
         setShowData(true);
 
     };
 
-    async function handle
+    async function handleVerifyPayment(_id) {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Verify it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                const newData = { paymentVerified: true, _id: _id };
+
+                try {
+                    const serverResponse = await axios.put(`http://localhost:3000/api/order`, newData);
+
+                    if (serverResponse.data) {
+                        Swal.fire({
+                            title: "Verified",
+                            text: "Payment has been deleted.",
+                            icon: "success"
+                        });
+
+                        setShowData(false);
+                        mutate('http://localhost:3000/api/order');
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                }
+
+            }
+        });
+        
+    }
+
+    async function handleDeleteOrder(_id) {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+
+                try {
+                    const serverResponse = await axios.delete(`http://localhost:3000/api/order?id=${_id}`);
+
+                    if (serverResponse) {
+
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+
+                        setShowData(false);
+                        mutate('http://localhost:3000/api/order');
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                }
+
+            }
+        });
+    }
 
     return (
         <div className="m-10">
@@ -43,7 +116,7 @@ const Dashboard = () => {
                     </thead>
                     <tbody>
 
-                        {data.map(data => <tr key={data._id} className="cursor-pointer hover:bg-gray-100" title="Click For Details" onClick={() => handleShowDetails(data.orderNumber)}>
+                        {data?.map(data => <tr key={data._id} className="cursor-pointer hover:bg-gray-100" title="Click For Details" onClick={() => handleShowDetails(data._id)}>
 
                             <td>{data?.name}</td>
                             <td>{data?.email}</td>
@@ -138,14 +211,18 @@ const Dashboard = () => {
                 <div className=""></div>
 
                 <div className="flex gap-4">
-                    <button className='py-2 px-3 bg-sky-500 hover:bg-sky-600 text-white'>Verify Payment</button>
+                    {!singleData.paymentVerified && <button button className='py-2 px-3 bg-sky-500 hover:bg-sky-600 text-white' onClick={() => handleVerifyPayment(singleData._id)}>Verify Payment</button>}
+
+                    {singleData.paymentVerified && <button button className='py-2 px-3 bg-sky-500 hover:bg-sky-600 text-white'>Received</button>}
+
+                    {singleData.isReceived && <button button className='py-2 px-3 bg-sky-500 hover:bg-sky-600 text-white'>Release</button>}
 
                     <button className='py-2 px-3 bg-sky-500 hover:bg-sky-600 text-white' onClick={() => setShowData(false)}>Close</button>
-                    <button className='py-2 px-3 bg-red-500 hover:bg-red-600 text-white'>Delete</button>
+                    <button className='py-2 px-3 bg-red-500 hover:bg-red-600 text-white' onClick={() => handleDeleteOrder(singleData._id)}>Delete</button>
 
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

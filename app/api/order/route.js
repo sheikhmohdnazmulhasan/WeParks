@@ -51,3 +51,20 @@ export async function PUT(request) {
 
     }
 };
+
+
+export async function DELETE(request) {
+    await connectMongoDB();
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    const result = await Orders.findByIdAndDelete(id);
+
+    if (result) {
+        return NextResponse.json({ message: 'Order successfully deleted' }, { status: 200 });
+
+    } else
+        return NextResponse.json({ message: 'Something Wrong' }, { status: 500 })
+}
+
+
