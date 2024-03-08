@@ -3,7 +3,6 @@ import Orders from "@/models/order";
 import { NextResponse } from "next/server";
 
 
-
 export async function GET(request) {
     await connectMongoDB();
 
@@ -15,7 +14,7 @@ export async function GET(request) {
         return NextResponse.json(result);
 
     } else {
-        const result = Orders.find();
+        const result = await Orders.find();
         return NextResponse.json(result);
     }
 }
@@ -51,3 +50,20 @@ export async function PUT(request) {
 
     }
 };
+
+
+export async function DELETE(request) {
+    await connectMongoDB();
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    const result = await Orders.findByIdAndDelete(id);
+
+    if (result) {
+        return NextResponse.json({ message: 'Order successfully deleted' }, { status: 200 });
+
+    } else
+        return NextResponse.json({ message: 'Something Wrong' }, { status: 500 })
+}
+
+

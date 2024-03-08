@@ -16,17 +16,15 @@ import xx4 from "@/public/xx/4.png";
 import xx3 from "@/public/xx/3.png";
 import xx5 from "@/public/xx/5.png";
 import xx6 from "@/public/xx/6.png";
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import moment from "moment";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   const initialPrice = 100;
-  // const [price, setPrice] = useState({});
   let price = {};
   const router = useRouter();
 
@@ -56,7 +54,6 @@ export default function Home() {
     const momentTo = moment(to);
     const spendHours = momentTo.diff(momentFrom, "hours");
 
-    const toastId = toast.loading('Navigating');
     const randomNumber = Math.random();
 
     if (momentFrom > momentTo) {
@@ -64,7 +61,6 @@ export default function Home() {
       return
 
     }
-
 
     if (spendHours <= 24) {
       price = calculateDiscount(1, 0);
@@ -101,7 +97,6 @@ export default function Home() {
       const serverResponse = await axios.post('http://localhost:3000/api/order', dataForServer);
 
       if (serverResponse.data.success) {
-        toast.success('Navigating to Booking Route', { id: toastId })
         router.push(`/booking?bookingId=${randomNumber}`);
 
       }
@@ -121,8 +116,7 @@ export default function Home() {
   return (
     <main className="mb-20 overflow-hidden">
       {/* Banner */}
-      <div><Toaster /></div>
-
+     
       {/* for PC */}
       <div className="bg-[url('https://i.ibb.co/XYJy5pR/banner.png')] md:block hidden h-[450px] bg-cover item-left">
         <div className="bg-black w-full h-full bg-opacity-45 flex items-center p-20">
@@ -153,7 +147,7 @@ export default function Home() {
               id=""
               className="w-full border p-2 rounded-3xl"
             >
-              <option value="ABCD">ABCD</option>
+              <option value="Bristol">Bristol</option>
             </select>
           </div>
 
@@ -195,7 +189,7 @@ export default function Home() {
 
       <div className="bg-[url('https://i.ibb.co/XYJy5pR/banner.png')] py-10 bg-cover md:hidden">
         <div className="bg-black bg-opacity-70 h-full w-full">
-          <form className=" flex flex-col pt-5 justify-center w-full px-5">
+          <form className=" flex flex-col pt-5 justify-center w-full px-5" onSubmit={handleHomeForm}>
             {/* location */}
             <div>
               <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
@@ -204,11 +198,11 @@ export default function Home() {
               </div>
               <div className="w-full">
                 <select
-                  name=""
+                  name="airport"
                   id=""
                   className="w-full border text-white bg-transparent p-2.5 rounded-3xl"
                 >
-                  <option value="ABCD">Abdc</option>
+                  <option value="Bristol">Bristol</option>
                 </select>
               </div>
             </div>
@@ -217,12 +211,12 @@ export default function Home() {
             <div className="mt-4">
               <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
                 <PiAirplaneTakeoff size={20} />
-                <p className="text-xl">Airport?</p>
+                <p className="text-xl">Parking From?</p>
               </div>
               <div className="w-full">
                 <input
                   type="datetime-local"
-                  name=""
+                  name="from"
                   id=""
                   className="w-full border bg-transparent text-white p-2 rounded-3xl"
                 />
@@ -233,12 +227,12 @@ export default function Home() {
             <div className="mt-4">
               <div className="flex gap-2 items-center text-[#0084BD] mb-2 ">
                 <PiAirplaneLanding size={20} />
-                <p className="text-xl">Airport?</p>
+                <p className="text-xl">Collect car?</p>
               </div>
               <div className="w-full">
                 <input
                   type="datetime-local"
-                  name=""
+                  name="to"
                   id=""
                   className="w-full border bg-transparent text-white p-2 rounded-3xl"
                 />
