@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
         {/* navbar */}
         <div className="flex justify-between items-center py-4 bg-[#161616] px-5 md:px-16">
           <div className="">
-            <Image src={logo} className="w-28" alt="Logo"></Image>
+            <Link href={'/'}>  <Image src={logo} className="w-28" alt="Logo"></Image></Link>
           </div>
           <Link href={'/check-booking'}> <div className="flex text-white items-center hover:text-[#29ABE3] gap-3 cursor-pointer hover:scale-105 transition-all">
             <LuCalendarClock size={28} />

@@ -147,7 +147,7 @@ export default function Home() {
               id=""
               className="w-full border p-2 rounded-3xl"
             >
-              <option value="ABCD">ABCD</option>
+              <option value="Bristol">Bristol</option>
             </select>
           </div>
 
@@ -202,7 +202,7 @@ export default function Home() {
                   id=""
                   className="w-full border text-white bg-transparent p-2.5 rounded-3xl"
                 >
-                  <option value="ABCD">Abdc</option>
+                  <option value="Bristol">Bristol</option>
                 </select>
               </div>
             </div>
