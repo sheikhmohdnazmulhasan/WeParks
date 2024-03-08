@@ -36,7 +36,7 @@ const Checkout = () => {
             return
 
         } else {
-            const dataForBackEnd = { name: firstName + ' ' + lastName, email, vehiclePlateNumber, vehicleModelYear, AirportTerminal, paymentVerified: false, isReceived: false, isRelease: false };
+            const dataForBackEnd = { name: firstName + ' ' + lastName, email, vehiclePlateNumber, vehicleModelYear, AirportTerminal, paymentVerified: false, isReceived: false, isRelease: false, trxID: '' };
 
             const newData = { ...data, ...dataForBackEnd }
 

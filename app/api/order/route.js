@@ -15,7 +15,7 @@ export async function GET(request) {
         return NextResponse.json(result);
 
     } else {
-        const result = Orders.find();
+        const result = await Orders.find();
         return NextResponse.json(result);
     }
 }

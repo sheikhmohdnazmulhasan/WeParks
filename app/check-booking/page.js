@@ -49,20 +49,20 @@ const CheckBooking = () => {
 
                 <div className="flex justify-between gap-10 md:gap-0 mb-6 border-b items-center">
                     <h4 className=' flex-1'>Name: </h4>
-                    <h4 className='flex-1 md:pl-60'>nazmul@xxx.com</h4>
+                    <h4 className='flex-1 md:pl-60'>{data.name}</h4>
                 </div>
                 <div className="flex justify-between gap-10 md:gap-0 mb-6 border-b items-center">
                     <h4 className=' flex-1'>Email: </h4>
-                    <h4 className='flex-1 md:pl-60'>nazmul@xxx.com</h4>
-                </div>
-
-                <div className="flex justify-between gap-10 md:gap-0 mb-6 border-b items-center">
-                    <h4 className=' flex-1'>To: </h4>
-                    <h4 className='flex-1 md:pl-60'>{data?.startDate}</h4>
+                    <h4 className='flex-1 md:pl-60'>{data.email}</h4>
                 </div>
 
                 <div className="flex justify-between gap-10 md:gap-0 mb-6 border-b items-center">
                     <h4 className=' flex-1'>From: </h4>
+                    <h4 className='flex-1 md:pl-60'>{data?.startDate}</h4>
+                </div>
+
+                <div className="flex justify-between gap-10 md:gap-0 mb-6 border-b items-center">
+                    <h4 className=' flex-1'>To: </h4>
                     <h4 className='flex-1 md:pl-60'>{data.EndDate}</h4>
                 </div>
 
