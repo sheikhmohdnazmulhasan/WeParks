@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 
 const fetcher = url => axios.get(url).then(res => res.data);
 
@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [singleData, setSingleData] = useState([]);
 
 
-    const { data = [], error, mutate } = useSWR('http://localhost:3000/api/order', fetcher);
+    const { data = [], error } = useSWR('http://localhost:3000/api/order', fetcher);
 
     async function handleShowDetails(_id) {
 
@@ -70,7 +70,7 @@ const Dashboard = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Verify it!"
+            confirmButtonText: "Yes, Received it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
 
