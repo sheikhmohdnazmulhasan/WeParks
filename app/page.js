@@ -22,6 +22,7 @@ import "aos/dist/aos.css";
 import moment from "moment";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const initialPrice = 100;
@@ -57,7 +58,7 @@ export default function Home() {
     const randomNumber = Math.random();
 
     if (momentFrom > momentTo) {
-      toast.error('please Provide Valid Date', { id: toastId });
+      toast.error('please Provide Valid Date');
       return
 
     }
@@ -116,7 +117,7 @@ export default function Home() {
   return (
     <main className="mb-20 overflow-hidden">
       {/* Banner */}
-     
+      <Toaster />
       {/* for PC */}
       <div className="bg-[url('https://i.ibb.co/XYJy5pR/banner.png')] md:block hidden h-[450px] bg-cover item-left">
         <div className="bg-black w-full h-full bg-opacity-45 flex items-center p-20">
