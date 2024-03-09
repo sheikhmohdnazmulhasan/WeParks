@@ -11,8 +11,9 @@ const Dashboard = () => {
     const [showData, setShowData] = useState(false);
     const [singleData, setSingleData] = useState([]);
 
+    const { data: allData = [], error } = useSWR('http://localhost:3000/api/order', fetcher);
+    const data = allData.filter(order => order.hasOwnProperty('trxID'));
 
-    const { data = [], error } = useSWR('http://localhost:3000/api/order', fetcher);
 
     async function handleShowDetails(_id) {
 
