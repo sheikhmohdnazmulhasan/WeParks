@@ -26,7 +26,7 @@ const Booking = () => {
         <div className='bg-[#0074BC] md:px-10 py-5 px-6 m-10 text-white space-y-10 md:h-60 md:w-[80%] md:mx-auto rounded-lg md:flex items-center gap-10 justify-between'>
             <div className="md:w-[50%]">
                 <h1 className='text-2xl font-semibold'>We Parks Meet And Greet Parking</h1>
-                <p>Arrive at the airport, and our professional drivers will meet you at the terminal. They'll take care of parking your vehicle in our secure facility while you head straight to check-in.</p>
+                <p>Arrive at the airport, and our professional drivers will meet you at the terminal. They will take care of parking your vehicle in our secure facility while you head straight to check-in.</p>
             </div>
             <div className="md:w-[25%]">
                 <h1 className='text-xl font-semibold'>Dateline</h1>

@@ -3,6 +3,8 @@ import Orders from "@/models/order";
 import { NextResponse } from "next/server";
 
 
+
+
 export async function GET(request) {
     await connectMongoDB();
 
@@ -39,8 +41,10 @@ export async function POST(request) {
 export async function PUT(request) {
     await connectMongoDB();
     const data = await request.json();
+    console.log(data);
     const filter = { _id: data._id };
     const result = await Orders.findByIdAndUpdate(filter, data);
+    console.log(result);
 
     if (result) {
         return NextResponse.json({ message: 'Order successfully Updated in database', success: true }, { status: 200 });
