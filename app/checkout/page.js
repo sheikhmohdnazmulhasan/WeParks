@@ -6,7 +6,7 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { BsCurrencyPound } from "react-icons/bs";
 import useSWR from "swr";
-const fetcher = url => axios.get(url).then(res => res.data)
+const fetcher = url => axios.get(url).then(res => res.data);
 
 const Checkout = () => {
 
