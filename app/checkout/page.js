@@ -1,18 +1,16 @@
 'use client'
-
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { BsCurrencyPound } from "react-icons/bs";
 import useSWR from "swr";
 const fetcher = url => axios.get(url).then(res => res.data)
 
-const Checkout = () => {
 
+const Checkout = () => {
     const searchParams = useSearchParams();
     const bookingId = searchParams.get('bookingId');
-
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -20,6 +18,8 @@ const Checkout = () => {
     const [vehicleModelYear, setVehicleModelYear] = useState('');
     const [AirportTerminal, setAirportTerminal] = useState('');
     const [conEmail, setConEmail] = useState('');
+
+    const router = useRouter()
 
     const { data = [], error } = useSWR(`http://localhost:3000/api/order?bookingId=${bookingId}`, fetcher);
 
@@ -42,8 +42,11 @@ const Checkout = () => {
 
             try {
                 const serverResponse = await axios.put(`http://localhost:3000/api/order`, newData);
+                console.log(serverResponse.data.message === "Order successfully Updated in database");
 
-                console.log(serverResponse);
+                if(serverResponse.data.message === "Order successfully Updated in database") {
+                    router.push(`/pay?bookingId=${bookingId}`)
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -127,6 +130,7 @@ const Checkout = () => {
                 <div className=" flex justify-center mt-8">
                     <button className='w-full py-3 bg-[#0074BC] hover:bg-[#4381a7] transition-all uppercase rounded-md text-white' onClick={handleNewData}>Checkout</button>
                 </div>
+
             </div>
 
         </div>
