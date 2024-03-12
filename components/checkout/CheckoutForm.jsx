@@ -5,7 +5,6 @@ import axios from "axios";
 import React from "react";
 import Swal from "sweetalert2";
 
-
 export default function CheckOutForm({information}) {
   const stripe = useStripe();
   const elements = useElements();
@@ -25,8 +24,10 @@ export default function CheckOutForm({information}) {
       const {paymentIntent} = await stripe?.confirmCardPayment(clientSecret, {
         payment_method: { card: cardElement },
       });
+      
       if(paymentIntent.id){
         const serverResponse = await axios.put(`http://localhost:3000/api/order`, {trxID: paymentIntent.id, _id: information._id});
+
         if (serverResponse.data) {
           Swal.fire({
               title: "Received",

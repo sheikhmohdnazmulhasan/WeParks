@@ -103,7 +103,7 @@ export default function Home() {
       }
 
     } catch (error) {
-      toast.error('Internal Server Error', { id: toastId })
+      toast.error('Internal Server Error')
     }
   }
 
@@ -258,7 +258,7 @@ export default function Home() {
               className="bg-[#0074BC] ml-5 w-fit hover:bg-[#3e7ca3] text-white rounded-3xl px-8 py-2.5 uppercase mt-5 mb-8
              md:mt-16"
             >
-              Search Parking{" "}
+              Start From £ 99
             </button>
           </div>
         </div>
@@ -285,10 +285,7 @@ export default function Home() {
             <h1 className="text-2xl font-semibold">Park & Ride</h1>
             <Image src={card1} width={90} alt="Card 1"></Image>
             <p className="text-sm">
-              Alternatively known as "Parking in the airport grounds" or "Park
-              and Stroll," this option strikes a balance between distance and
-              price. If a transfer bus is necessary, the journey is brief.
-              Generally, you can reach the terminal in just a few minutes.
+            Experience the convenience of parking your car at a designated area a short distance from the airport. Utilize the transfer bus service to reach the terminal, resembling the familiar concept of city center park and ride facilities.
             </p>
           </div>
 

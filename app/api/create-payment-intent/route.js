@@ -14,6 +14,7 @@ export async function POST(req) {
     });
 
     return new NextResponse(paymentIntent.client_secret, { status: 200 });
+    
   } catch (error) {
     return new NextResponse(error, {
       status: 400,

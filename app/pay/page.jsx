@@ -10,6 +10,7 @@ import CheckOutForm from "@/components/checkout/CheckoutForm";
 
 import useSWR from 'swr';
 import { useSearchParams } from "next/navigation";
+import axios from "axios";
 const fetcher = url => axios.get(url).then(res => res.data)
 
 
@@ -20,7 +21,6 @@ const Payment = () => {
     const bookingId = searchParams.get('bookingId');
 
     const { data = [], error } = useSWR(`http://localhost:3000/api/order?bookingId=${bookingId}`, fetcher);
-    console.log(data)
 
 
     function closeModal() {
@@ -69,7 +69,7 @@ const Payment = () => {
                                             </div>
                                             <div className="lg:w-1/2">
                                                 <Elements stripe={stripePromise}>
-                                                    <CheckOutForm information={data}/>
+                                                       <CheckOutForm information={data}/>
                                                 </Elements>
                                             </div>
                                         </div>
