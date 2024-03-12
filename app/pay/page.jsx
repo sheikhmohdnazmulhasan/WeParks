@@ -21,7 +21,7 @@ const Payment = () => {
     const bookingId = searchParams.get('bookingId');
 
     const { data = [], error } = useSWR(`http://localhost:3000/api/order?bookingId=${bookingId}`, fetcher);
-    console.log(data)
+    
 
 
     function closeModal() {
