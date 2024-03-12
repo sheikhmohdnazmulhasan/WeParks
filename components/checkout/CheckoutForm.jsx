@@ -126,7 +126,6 @@ export default function CheckOutForm({information}) {
             className="w-full px-3  py-1 mb-1 border-2 bg-transparent border-gray-200 rounded-md focus:outline-none"
             placeholder="Full name on card"
             type="text"
-
             required
           />
         </div>

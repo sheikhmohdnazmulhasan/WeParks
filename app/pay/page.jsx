@@ -59,17 +59,18 @@ const Payment = () => {
                                     <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                                         <div className="flex flex-col md:flex-row mt-10">
                                             <div className="lg:w-1/2">
-                                                <h1 className="text-start text-xl flex items-center">weparktodo</h1>
-                                                <h1 className="text-start text-xl mt-6">weparktodo</h1>
-                                                <h1 className="text-start text-4xl font-bold">wepark</h1>
-                                                <div className="overflow-x-auto">
 
-                                                    <p className="py-5 pr-10">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam blanditiis ratione quam laboriosam explicabo qui natus neque ex perferendis ab aut quae dolores nemo corrupti est dolorum nam eligendi, sapiente optio deserunt incidunt. Explicabo, neque.</p>
+                                                <h1 className="text-start text-4xl font-bold">We Park Here</h1>
+
+                                                <div className="overflow-x-auto">
+                                                    <p className="py-5 pr-10">Rely on Trusted Parking
+                                                        Solutions for Your
+                                                        UK Airport Parking Needs.</p>
                                                 </div>
                                             </div>
                                             <div className="lg:w-1/2">
                                                 <Elements stripe={stripePromise}>
-                                                       <CheckOutForm information={data}/>
+                                                    <CheckOutForm information={data} />
                                                 </Elements>
                                             </div>
                                         </div>
