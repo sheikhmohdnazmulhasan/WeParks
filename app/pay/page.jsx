@@ -63,9 +63,7 @@ const Payment = () => {
                                                 <h1 className="text-start text-4xl font-bold">We Park Here</h1>
 
                                                 <div className="overflow-x-auto">
-                                                    <p className="py-5 pr-10">Rely on Trusted Parking
-                                                        Solutions for Your
-                                                        UK Airport Parking Needs.</p>
+                                                    <p className="py-5 pr-10">Rely on Trusted Parking Solutions for Your UK Airport Parking Needs.</p>
                                                 </div>
                                             </div>
                                             <div className="lg:w-1/2">
