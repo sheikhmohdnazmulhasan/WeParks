@@ -5,7 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { FaHouseUser } from "react-icons/fa6";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import CheckOutForm from "@/components/checkout/CheckoutForm";
 
 import useSWR from 'swr';
@@ -16,6 +16,7 @@ const fetcher = url => axios.get(url).then(res => res.data)
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const Payment = () => {
+    const [open, setOpen] = useState(false)
     const searchParams = useSearchParams();
     const bookingId = searchParams.get('bookingId');
 
@@ -24,8 +25,7 @@ const Payment = () => {
 
 
     function closeModal() {
-        setOpen(false);
-        setIsOpen(false);
+        setOpen(true);
     }
 
     return (
