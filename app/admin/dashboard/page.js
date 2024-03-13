@@ -19,7 +19,7 @@ const Dashboard = () => {
     const [showData, setShowData] = useState(false);
     const [singleData, setSingleData] = useState([]);
 
-    const { data: allData = [], error } = useSWR('http://localhost:3000/api/order', fetcher);
+    const { data: allData = [], error } = useSWR('https://we-parks-gamma.vercel.app/api/order', fetcher);
     const data = allData.filter(order => order.hasOwnProperty('trxID'));
 
     async function handleShowDetails(_id) {
@@ -46,7 +46,7 @@ const Dashboard = () => {
                 const newData = { paymentVerified: true, _id: _id };
 
                 try {
-                    const serverResponse = await axios.put(`http://localhost:3000/api/order`, newData);
+                    const serverResponse = await axios.put(`https://we-parks-gamma.vercel.app/api/order`, newData);
 
                     if (serverResponse.data) {
                         Swal.fire({
@@ -56,7 +56,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('http://localhost:3000/api/order');
+                        mutate('https://we-parks-gamma.vercel.app/api/order');
                     }
 
                 } catch (error) {
@@ -85,7 +85,7 @@ const Dashboard = () => {
                 const newData = { isReceived: true, _id: _id };
 
                 try {
-                    const serverResponse = await axios.put(`http://localhost:3000/api/order`, newData);
+                    const serverResponse = await axios.put(`https://we-parks-gamma.vercel.app/api/order`, newData);
 
                     if (serverResponse.data) {
                         Swal.fire({
@@ -95,7 +95,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('http://localhost:3000/api/order');
+                        mutate('https://we-parks-gamma.vercel.app/api/order');
                     }
 
                 } catch (error) {
@@ -123,7 +123,7 @@ const Dashboard = () => {
                 const newData = { isRelease: true, _id: _id };
 
                 try {
-                    const serverResponse = await axios.put(`http://localhost:3000/api/order`, newData);
+                    const serverResponse = await axios.put(`https://we-parks-gamma.vercel.app/api/order`, newData);
 
                     if (serverResponse.data) {
                         Swal.fire({
@@ -133,7 +133,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('http://localhost:3000/api/order');
+                        mutate('https://we-parks-gamma.vercel.app/api/order');
                     }
 
                 } catch (error) {
@@ -160,7 +160,7 @@ const Dashboard = () => {
 
 
                 try {
-                    const serverResponse = await axios.delete(`http://localhost:3000/api/order?id=${_id}`);
+                    const serverResponse = await axios.delete(`https://we-parks-gamma.vercel.app/api/order?id=${_id}`);
 
                     if (serverResponse) {
 
@@ -171,7 +171,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('http://localhost:3000/api/order');
+                        mutate('https://we-parks-gamma.vercel.app/api/order');
                     }
 
                 } catch (error) {

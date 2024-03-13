@@ -21,7 +21,7 @@ const Checkout = () => {
 
     const router = useRouter()
 
-    const { data = [], error } = useSWR(`http://localhost:3000/api/order?bookingId=${bookingId}`, fetcher);
+    const { data = [], error } = useSWR(`https://we-parks-gamma.vercel.app/api/order?bookingId=${bookingId}`, fetcher);
 
     async function handleNewData() {
 
@@ -41,7 +41,7 @@ const Checkout = () => {
             const newData = { ...data, ...dataForBackEnd }
 
             try {
-                const serverResponse = await axios.put(`http://localhost:3000/api/order`, newData);
+                const serverResponse = await axios.put(`https://we-parks-gamma.vercel.app/api/order`, newData);
                 console.log(serverResponse.data.message === "Order successfully Updated in database");
 
                 if(serverResponse.data.message === "Order successfully Updated in database") {
