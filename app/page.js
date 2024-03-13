@@ -95,7 +95,7 @@ export default function Home() {
     };
 
     try {
-      const serverResponse = await axios.post('http://localhost:3000/api/order', dataForServer);
+      const serverResponse = await axios.post('https://we-parks-gamma.vercel.app/api/order', dataForServer);
 
       if (serverResponse.data.success) {
         router.push(`/booking?bookingId=${randomNumber}`);

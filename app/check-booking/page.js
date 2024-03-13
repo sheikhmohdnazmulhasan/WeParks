@@ -14,7 +14,7 @@ const CheckBooking = () => {
         setErr('')
 
         try {
-            const serverResponse = await axios.get(`http://localhost:3000/api/order?bookingId=${id}`);
+            const serverResponse = await axios.get(`https://we-parks-gamma.vercel.app/api/order?bookingId=${id}`);
             if (serverResponse.data) {
                 setData(serverResponse.data);
                 setShowData(true);
