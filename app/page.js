@@ -285,7 +285,7 @@ export default function Home() {
             <h1 className="text-2xl font-semibold">Park & Ride</h1>
             <Image src={card1} width={90} alt="Card 1"></Image>
             <p className="text-sm">
-            Experience the convenience of parking your car at a designated area a short distance from the airport. Utilize the transfer bus service to reach the terminal, resembling the familiar concept of city center park and ride facilities.
+              Experience the convenience of parking your car at a designated area a short distance from the airport. Utilize the transfer bus service to reach the terminal, resembling the familiar concept of city center park and ride facilities.
             </p>
           </div>
 
@@ -294,8 +294,8 @@ export default function Home() {
             <h1 className="text-2xl font-semibold">Park & Stroll</h1>
             <Image src={card2} width={90} alt="Card 1"></Image>
             <p className="text-sm">
-              Alternatively known as "Parking in the airport grounds" or "Park
-              and Stroll," this option strikes a balance between distance and
+              Alternatively known as &quot; Parking in the airport grounds&quot; or &quot;Park
+              and Stroll,&quot; this option strikes a balance between distance and
               price. If a transfer bus is necessary, the journey is brief.
               Generally, you can reach the terminal in just a few minutes.
             </p>
@@ -370,8 +370,8 @@ export default function Home() {
           The most popular Airport right now
         </h1>
         <p className="mt-3">
-          Experience the utmost convenience at the UK's preferred airport
-          parking facility. Offering secure and reliable services, it's the top
+          Experience the utmost convenience at the UK&apos;s preferred airport
+          parking facility. Offering secure and reliable services, it&apos;s the top
           choice for travelers seeking peace of mind while leaving their
           vehicles. Make your journey stress-free with our trusted and popular
           airport parking option.
