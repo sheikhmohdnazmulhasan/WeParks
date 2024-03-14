@@ -21,7 +21,7 @@ const Payment = () => {
     const searchParams = useSearchParams();
     const bookingId = searchParams.get('bookingId');
 
-    const { data = [], error } = useSWR(`https://we-parks-gamma.vercel.app/api/order?bookingId=${bookingId}`, fetcher);
+    const { data = [], error } = useSWR(`https://www.weparkhere.co.uk/api/order?bookingId=${bookingId}`, fetcher);
 
 
     function closeModal() {

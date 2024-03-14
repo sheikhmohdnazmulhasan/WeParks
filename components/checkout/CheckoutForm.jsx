@@ -50,7 +50,7 @@ export default function CheckOutForm({ information }) {
 
       if (paymentIntent.id) {
         const serverResponse = await axios.put(
-          `https://we-parks-gamma.vercel.app/api/order`,
+          `https://www.weparkhere.co.uk/api/order`,
           { trxID: paymentIntent.id, _id: information._id }
         );
         if (serverResponse.data) {
@@ -63,7 +63,7 @@ export default function CheckOutForm({ information }) {
           router.push('/');
 
           setShowData(false);
-          mutate("https://we-parks-gamma.vercel.app/api/order");
+          mutate("https://www.weparkhere.co.uk/api/order");
         }
       }
     } catch (error) {
