@@ -1,6 +1,9 @@
 'use client'
 import { signIn } from 'next-auth/react';
-const Profile = () => {
+import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
+const Login = () => {
+    const router = useRouter();
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -11,10 +14,10 @@ const Profile = () => {
             const res = await signIn('credentials', { email, password, redirect: false });
 
             if (res.ok) {
-                alert('login successful');
+                router.push('/admin/dashboard');
 
             } else {
-                alert('invalid Email And Password');
+                Swal.error(`invalid Email Or Password!`)
             }
 
         } catch (error) {
@@ -62,4 +65,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default Login;
