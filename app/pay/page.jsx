@@ -68,7 +68,7 @@ const Payment = () => {
                                             </div>
                                             <div className="lg:w-1/2">
                                                 <Elements stripe={stripePromise}>
-                                                    <CheckOutForm information={data} />
+                                                    <CheckOutForm information={data} bookingId={bookingId} />
                                                 </Elements>
                                             </div>
                                         </div>

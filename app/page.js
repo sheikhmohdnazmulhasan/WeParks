@@ -25,9 +25,9 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
+  const router = useRouter();
   const initialPrice = 100;
   let price = {};
-  const router = useRouter();
 
   const calculateDiscount = (times, discount) => {
     let discountRate = discount * 100;
@@ -58,29 +58,36 @@ export default function Home() {
     const randomNumber = Math.random();
 
     if (momentFrom > momentTo) {
-      toast.error('please Provide Valid Date');
+      toast.error('Please Provide Valid Date');
       return
 
     }
 
     if (spendHours <= 24) {
       price = calculateDiscount(1, 0);
+
     } else if (spendHours > 24 && spendHours <= 48) {
       // let totalPrice = initialPrice * 2;
       // let discount = totalPrice * .05;
       // price = totalPrice - discount;
       price = calculateDiscount(2, 0.05);
+
     } else if (spendHours > 48 && spendHours <= 72) {
       price = calculateDiscount(3, 0.1);
+
     } else if (spendHours > 72 && spendHours <= 96) {
       price = calculateDiscount(4, 0.15);
+
     } else if (spendHours > 96 && spendHours <= 120) {
       price = calculateDiscount(5, 0.2);
+
     } else if (spendHours > 120 && spendHours <= 144) {
       price = calculateDiscount(6, 0.25);
+
     } else {
       let day = spendHours / 24;
       price = calculateDiscount(day, 0.3);
+
     }
 
     const dataForServer = {
@@ -115,7 +122,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="mb-20 overflow-hidden">
+    <main className=" overflow-hidden">
       {/* Banner */}
       <Toaster />
       {/* for PC */}
@@ -467,6 +474,12 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-20">
+        <div className="mt-10 mb-2 flex md:justify-end w-[85%] mx-auto">
+          <p className="md:text-xl">Park Stress-Free <br /> Just 5 Minutes Away from the Airport!</p>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2276.1110159554955!2d-2.6948871!3d51.38276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871f4b696998a57%3A0x636268a6cfd9708b!2sFelton%20Common!5e1!3m2!1sen!2sbd!4v1713195447033!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-52 md:h-96"></iframe>
       </div>
     </main>
   );

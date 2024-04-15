@@ -34,14 +34,25 @@ export default function RootLayout({ children }) {
           <body className={inter.className}>
 
             {/* navbar */}
-            <div className="flex justify-between items-center py-4 bg-[#161616] px-5 md:px-16">
-              <div className="">
-                <Link href={'/'}>  <Image src={logo} className="w-28" alt="Logo"></Image></Link>
+            <div className="">
+
+              {/* top */}
+              <div className="px-5 md:px-16 font-semibold bg-[#0074BC] py-2 shadow-lg flex gap-3 items-center justify-end text-white">
+                <p className="text-2xl">07480277277</p>
+                <p>Available 24 hours</p>
+
+
               </div>
-              <Link href={'/check-booking'}> <div className="flex text-white items-center hover:text-[#29ABE3] gap-3 cursor-pointer hover:scale-105 transition-all">
-                <LuCalendarClock size={28} />
-                <p>Check Booking</p>
-              </div></Link>
+
+              <div className="flex justify-between items-center py-4 bg-[#161616] px-5 md:px-16">
+                <div className="">
+                  <Link href={'/'}>  <Image src={logo} className="w-28" alt="Logo"></Image></Link>
+                </div>
+                <Link href={'/check-booking'}> <div className="flex text-white items-center hover:text-[#29ABE3] gap-3 cursor-pointer hover:scale-105 transition-all">
+                  <LuCalendarClock size={28} />
+                  <p>Check Booking</p>
+                </div></Link>
+              </div>
             </div>
 
             <div className="min-h-screen">
@@ -50,6 +61,7 @@ export default function RootLayout({ children }) {
 
             {/* footer */}
             <div className="">
+
               <div className="bg-[#242424]  md:flex p-7 md:p-20 justify-between">
                 <div className="">
                   <Image src={logo} className="w-28" alt="logo" />
