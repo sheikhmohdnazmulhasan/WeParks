@@ -50,6 +50,7 @@ export default function RootLayout({ children }) {
 
             {/* footer */}
             <div className="">
+
               <div className="bg-[#242424]  md:flex p-7 md:p-20 justify-between">
                 <div className="">
                   <Image src={logo} className="w-28" alt="logo" />
