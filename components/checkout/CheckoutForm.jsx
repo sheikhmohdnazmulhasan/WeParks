@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-export default function CheckOutForm({ information }) {
+export default function CheckOutForm({ information, bookingId }) {
   const stripe = useStripe();
   const elements = useElements();
   const [postalCode, setPostalCode] = useState('');
@@ -56,7 +56,7 @@ export default function CheckOutForm({ information }) {
         if (serverResponse.data) {
           Swal.fire({
             title: "Received",
-            text: "Transaction has been added.",
+            text: `Transaction has been added. Your Tracking Number ${bookingId}`,
             icon: "success",
           });
 

@@ -25,9 +25,9 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
+  const router = useRouter();
   const initialPrice = 100;
   let price = {};
-  const router = useRouter();
 
   const calculateDiscount = (times, discount) => {
     let discountRate = discount * 100;
@@ -58,29 +58,36 @@ export default function Home() {
     const randomNumber = Math.random();
 
     if (momentFrom > momentTo) {
-      toast.error('please Provide Valid Date');
+      toast.error('Please Provide Valid Date');
       return
 
     }
 
     if (spendHours <= 24) {
       price = calculateDiscount(1, 0);
+
     } else if (spendHours > 24 && spendHours <= 48) {
       // let totalPrice = initialPrice * 2;
       // let discount = totalPrice * .05;
       // price = totalPrice - discount;
       price = calculateDiscount(2, 0.05);
+
     } else if (spendHours > 48 && spendHours <= 72) {
       price = calculateDiscount(3, 0.1);
+
     } else if (spendHours > 72 && spendHours <= 96) {
       price = calculateDiscount(4, 0.15);
+
     } else if (spendHours > 96 && spendHours <= 120) {
       price = calculateDiscount(5, 0.2);
+
     } else if (spendHours > 120 && spendHours <= 144) {
       price = calculateDiscount(6, 0.25);
+
     } else {
       let day = spendHours / 24;
       price = calculateDiscount(day, 0.3);
+      
     }
 
     const dataForServer = {
