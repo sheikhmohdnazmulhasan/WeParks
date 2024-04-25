@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { BsCurrencyPound } from "react-icons/bs";
 import useSWR from 'swr';
 
@@ -12,14 +12,20 @@ const fetcher = url => axios.get(url).then(res => res.data)
 
 const Booking = () => {
     const router = useRouter();
+    const [data, setData] = useState([]);
 
     const searchParams = useSearchParams();
     const bookingId = searchParams.get('bookingId');
 
-    const { data = [], error } = useSWR(`/api/order?bookingId=${bookingId}`, fetcher);
+    useEffect(() => {
+        axios.get(`/api/order?bookingId=${bookingId}`).then(res => setData(res.data)).catch(err => console.log(err));
+
+    }, [bookingId]);
 
     function handleNavigate() {
-        return router.push(`/checkout?bookingId=${bookingId}`);
+        if (data) {
+            return router.push(`/checkout?bookingId=${bookingId}`);
+        }
     }
 
     return (
@@ -36,7 +42,7 @@ const Booking = () => {
                 </div>
                 <div className="md:w-[25%] md:flex md:flex-col md:items-end ">
                     <h1 className='text-2xl flex items-center font-semibold'> <BsCurrencyPound className='font-bold' /> {data?.subTotal}</h1>
-                    <button className='py-3 w-full md:w-fit  px-5 rounded-3xl bg-black text-white font-semibold mt-5' onClick={handleNavigate}>Book Now</button>
+                    <button className={`py-3 w-full md:w-fit ${!data && 'opacity-10 hover:cursor-not-allowed'} px-5 rounded-3xl bg-black text-white font-semibold mt-5`} onClick={handleNavigate} disabled={data ? false : true}>Book Now</button>
                 </div>
             </div>
         </Suspense>

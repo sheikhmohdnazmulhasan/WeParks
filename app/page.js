@@ -57,10 +57,8 @@ export default function Home() {
 
     const randomNumber = Math.random();
 
-    const toastId = toast.loading('Calculating Price...');
-
     if (momentFrom > momentTo) {
-      toast.error('Please Provide Valid Date', { id: toastId });
+      toast.error('Please Provide Valid Date');
       return
 
     }
@@ -107,8 +105,6 @@ export default function Home() {
       const serverResponse = await axios.post('/api/order', dataForServer);
 
       if (serverResponse.data.success) {
-        toast(toastId);
-
         router.push(`/booking?bookingId=${randomNumber}`);
 
       }
