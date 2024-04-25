@@ -16,7 +16,7 @@ const Booking = () => {
     const searchParams = useSearchParams();
     const bookingId = searchParams.get('bookingId');
 
-    const { data = [], error } = useSWR(`https://www.weparkhere.co.uk/api/order?bookingId=${bookingId}`, fetcher);
+    const { data = [], error } = useSWR(`/api/order?bookingId=${bookingId}`, fetcher);
 
     function handleNavigate() {
         return router.push(`/checkout?bookingId=${bookingId}`);

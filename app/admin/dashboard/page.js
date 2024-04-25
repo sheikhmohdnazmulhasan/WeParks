@@ -19,7 +19,7 @@ const Dashboard = () => {
     const [showData, setShowData] = useState(false);
     const [singleData, setSingleData] = useState([]);
 
-    const { data: allData = [], error } = useSWR('https://www.weparkhere.co.uk/api/order', fetcher);
+    const { data: allData = [], error } = useSWR('/api/order', fetcher);
     const data = allData.filter(order => order.hasOwnProperty('trxID'));
 
     async function handleShowDetails(_id) {
@@ -46,7 +46,7 @@ const Dashboard = () => {
                 const newData = { paymentVerified: true, _id: _id };
 
                 try {
-                    const serverResponse = await axios.put(`https://www.weparkhere.co.uk/api/order`, newData);
+                    const serverResponse = await axios.put(`/api/order`, newData);
 
                     if (serverResponse.data) {
                         Swal.fire({
@@ -56,7 +56,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('https://www.weparkhere.co.uk/api/order');
+                        mutate('/api/order');
                     }
 
                 } catch (error) {
@@ -85,7 +85,7 @@ const Dashboard = () => {
                 const newData = { isReceived: true, _id: _id };
 
                 try {
-                    const serverResponse = await axios.put(`https://www.weparkhere.co.uk/api/order`, newData);
+                    const serverResponse = await axios.put(`/api/order`, newData);
 
                     if (serverResponse.data) {
                         Swal.fire({
@@ -95,7 +95,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('https://www.weparkhere.co.uk/api/order');
+                        mutate('/api/order');
                     }
 
                 } catch (error) {
@@ -123,7 +123,7 @@ const Dashboard = () => {
                 const newData = { isRelease: true, _id: _id };
 
                 try {
-                    const serverResponse = await axios.put(`https://www.weparkhere.co.uk/api/order`, newData);
+                    const serverResponse = await axios.put(`/api/order`, newData);
 
                     if (serverResponse.data) {
                         Swal.fire({
@@ -133,7 +133,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('https://www.weparkhere.co.uk/api/order');
+                        mutate('/api/order');
                     }
 
                 } catch (error) {
@@ -160,7 +160,7 @@ const Dashboard = () => {
 
 
                 try {
-                    const serverResponse = await axios.delete(`https://www.weparkhere.co.uk/api/order?id=${_id}`);
+                    const serverResponse = await axios.delete(`/api/order?id=${_id}`);
 
                     if (serverResponse) {
 
@@ -171,7 +171,7 @@ const Dashboard = () => {
                         });
 
                         setShowData(false);
-                        mutate('https://www.weparkhere.co.uk/api/order');
+                        mutate('/api/order');
                     }
 
                 } catch (error) {

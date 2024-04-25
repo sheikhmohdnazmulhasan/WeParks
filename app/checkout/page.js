@@ -21,7 +21,7 @@ const Checkout = () => {
 
     const router = useRouter()
 
-    const { data = [], error } = useSWR(`https://www.weparkhere.co.uk/api/order?bookingId=${bookingId}`, fetcher);
+    const { data = [], error } = useSWR(`/api/order?bookingId=${bookingId}`, fetcher);
 
     async function handleNewData() {
 
@@ -41,7 +41,7 @@ const Checkout = () => {
             const newData = { ...data, ...dataForBackEnd }
 
             try {
-                const serverResponse = await axios.put(`https://www.weparkhere.co.uk/api/order`, newData);
+                const serverResponse = await axios.put(`/api/order`, newData);
                 console.log(serverResponse.data.message === "Order successfully Updated in database");
 
                 if(serverResponse.data.message === "Order successfully Updated in database") {
