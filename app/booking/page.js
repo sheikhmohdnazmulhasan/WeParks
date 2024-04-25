@@ -20,7 +20,7 @@ const Booking = () => {
     useEffect(() => {
         axios.get(`/api/order?bookingId=${bookingId}`).then(res => setData(res.data)).catch(err => console.log(err));
 
-    }, [bookingId]);
+    }, []);
 
     function handleNavigate() {
         if (data) {
