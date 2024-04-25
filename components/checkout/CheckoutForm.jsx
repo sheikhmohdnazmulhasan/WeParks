@@ -50,7 +50,7 @@ export default function CheckOutForm({ information, bookingId }) {
 
       if (paymentIntent.id) {
         const serverResponse = await axios.put(
-          `https://www.weparkhere.co.uk/api/order`,
+          `/api/order`,
           { trxID: paymentIntent.id, _id: information._id }
         );
         if (serverResponse.data) {
@@ -63,7 +63,7 @@ export default function CheckOutForm({ information, bookingId }) {
           router.push('/');
 
           setShowData(false);
-          mutate("https://www.weparkhere.co.uk/api/order");
+          mutate("/api/order");
         }
       }
     } catch (error) {

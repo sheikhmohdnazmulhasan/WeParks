@@ -57,8 +57,10 @@ export default function Home() {
 
     const randomNumber = Math.random();
 
+    const toastId = toast.loading('Calculating Price...');
+
     if (momentFrom > momentTo) {
-      toast.error('Please Provide Valid Date');
+      toast.error('Please Provide Valid Date', { id: toastId });
       return
 
     }
@@ -102,9 +104,11 @@ export default function Home() {
     };
 
     try {
-      const serverResponse = await axios.post('https://www.weparkhere.co.uk/api/order', dataForServer);
+      const serverResponse = await axios.post('/api/order', dataForServer);
 
       if (serverResponse.data.success) {
+        toast(toastId);
+
         router.push(`/booking?bookingId=${randomNumber}`);
 
       }
@@ -124,7 +128,7 @@ export default function Home() {
   return (
     <main className=" overflow-hidden">
       {/* Banner */}
-      <Toaster />
+      <Toaster position="bottom-right" reverseOrder={false} />
       {/* for PC */}
       <div className="bg-[url('https://i.ibb.co/XYJy5pR/banner.png')] md:block hidden h-[450px] bg-cover item-left">
         <div className="bg-black w-full h-full bg-opacity-45 flex items-center p-20">
@@ -265,7 +269,7 @@ export default function Home() {
               className="bg-[#0074BC] ml-5 w-fit hover:bg-[#3e7ca3] text-white rounded-3xl px-8 py-2.5 uppercase mt-5 mb-8
              md:mt-16"
             >
-              Start From £ 99
+              Start From £1
             </button>
           </div>
         </div>
@@ -465,7 +469,7 @@ export default function Home() {
             </figure>
             <div className="card-body">
               <h2 className="card-title font-bold text-[#0074BC]">
-                Bermingham
+                Birmingham
               </h2>
               <p className="hidden md:block">
                 Secure Birmingham Airport parking. Reserve your space for a
@@ -479,7 +483,7 @@ export default function Home() {
         <div className="mt-10 mb-2 flex md:justify-end w-[85%] mx-auto">
           <p className="md:text-xl">Park Stress-Free <br /> Just 5 Minutes Away from the Airport!</p>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2276.1110159554955!2d-2.6948871!3d51.38276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871f4b696998a57%3A0x636268a6cfd9708b!2sFelton%20Common!5e1!3m2!1sen!2sbd!4v1713195447033!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-52 md:h-96"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2276.1110159554955!2d-2.6948871!3d51.38276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871f4b696998a57%3A0x636268a6cfd9708b!2sFelton%20Common!5e1!3m2!1sen!2sbd!4v1713195447033!5m2!1sen!2sbd" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full h-52 md:h-96"></iframe>
       </div>
     </main>
   );
